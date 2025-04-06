@@ -20,6 +20,16 @@ class AppTheme {
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainColor),
       scaffoldBackgroundColor: AppColors.blackColor,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          type: BottomNavigationBarType.fixed,
+          unselectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.w700, fontSize: 12, color: Colors.white),
+          selectedLabelStyle: TextStyle(
+              fontWeight: FontWeight.w700, fontSize: 12, color: Colors.white),
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          backgroundColor: AppColors.mainColor,
+          selectedItemColor: Colors.white),
       appBarTheme: AppBarTheme(
           backgroundColor: AppColors.blackColor,
           elevation: 0,
