@@ -27,110 +27,113 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            tabs[index],
-            Positioned(
-                left: 0,
-                right: 0,
-                top: 10,
-                child: Image.asset(
-                  AppAsset.logoImage,
-                  height: MediaQuery.of(context).size.height * .2,
-                )),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (value) {
-            print('XX$value');
-            index = value;
-            setState(() {});
-          },
-          currentIndex: index,
-          items: [
-            BottomNavigationBarItem(
-                activeIcon: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: AppColors.blackColor.withOpacity(.6)),
-                  child: SvgPicture.asset(
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          body: Stack(
+            children: [
+              tabs[index],
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  top: 10,
+                  child: Image.asset(
+                    AppAsset.logoImage,
+                    height: MediaQuery.of(context).size.height * .2,
+                  )),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (value) {
+              print('XX$value');
+              index = value;
+              setState(() {});
+            },
+            currentIndex: index,
+            items: [
+              BottomNavigationBarItem(
+                  activeIcon: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: AppColors.blackColor.withOpacity(.6)),
+                    child: SvgPicture.asset(
+                      AppAsset.quranIcon,
+                      colorFilter:
+                          ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                    ),
+                  ),
+                  icon: SvgPicture.asset(
                     AppAsset.quranIcon,
-                    colorFilter:
-                        ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   ),
-                ),
-                icon: SvgPicture.asset(
-                  AppAsset.quranIcon,
-                ),
-                label: 'home'),
-            BottomNavigationBarItem(
-                activeIcon: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: AppColors.blackColor.withOpacity(.6)),
-                  child: SvgPicture.asset(
+                  label: 'home'),
+              BottomNavigationBarItem(
+                  activeIcon: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: AppColors.blackColor.withOpacity(.6)),
+                    child: SvgPicture.asset(
+                      AppAsset.bookIcon,
+                      color: Colors.white,
+                    ),
+                  ),
+                  icon: SvgPicture.asset(
                     AppAsset.bookIcon,
-                    color: Colors.white,
                   ),
-                ),
-                icon: SvgPicture.asset(
-                  AppAsset.bookIcon,
-                ),
-                label: 'hadeeth'),
-            BottomNavigationBarItem(
-                activeIcon: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: AppColors.blackColor.withOpacity(.6)),
-                  child: SvgPicture.asset(
+                  label: 'hadeeth'),
+              BottomNavigationBarItem(
+                  activeIcon: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: AppColors.blackColor.withOpacity(.6)),
+                    child: SvgPicture.asset(
+                      AppAsset.sebhaIcon,
+                      color: Colors.white,
+                    ),
+                  ),
+                  icon: SvgPicture.asset(
                     AppAsset.sebhaIcon,
-                    color: Colors.white,
                   ),
-                ),
-                icon: SvgPicture.asset(
-                  AppAsset.sebhaIcon,
-                ),
-                label: 'sebha'),
-            BottomNavigationBarItem(
-                activeIcon: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: AppColors.blackColor.withOpacity(.6)),
-                  child: SvgPicture.asset(
+                  label: 'sebha'),
+              BottomNavigationBarItem(
+                  activeIcon: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: AppColors.blackColor.withOpacity(.6)),
+                    child: SvgPicture.asset(
+                      AppAsset.radioIcon,
+                      color: Colors.white,
+                    ),
+                  ),
+                  icon: SvgPicture.asset(
                     AppAsset.radioIcon,
-                    color: Colors.white,
                   ),
-                ),
-                icon: SvgPicture.asset(
-                  AppAsset.radioIcon,
-                ),
-                label: 'radio'),
-            BottomNavigationBarItem(
-                activeIcon: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: AppColors.blackColor.withOpacity(.6)),
-                  child: SvgPicture.asset(
+                  label: 'radio'),
+              BottomNavigationBarItem(
+                  activeIcon: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60),
+                        color: AppColors.blackColor.withOpacity(.6)),
+                    child: SvgPicture.asset(
+                      AppAsset.vectorIcon,
+                      color: Colors.white,
+                    ),
+                  ),
+                  icon: SvgPicture.asset(
                     AppAsset.vectorIcon,
-                    color: Colors.white,
                   ),
-                ),
-                icon: SvgPicture.asset(
-                  AppAsset.vectorIcon,
-                ),
-                label: 'time'),
-          ],
+                  label: 'time'),
+            ],
+          ),
         ),
       ),
     );

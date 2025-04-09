@@ -111,9 +111,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       loading = true;
     });
     try {
-      await Future.delayed(
-        Duration(seconds: 10),
-      );
+      // await Future.delayed(
+      //   Duration(seconds: 10),
+      // );
 
       String fileContent = await rootBundle
           .loadString('assets/files/Suras/${suraModel.suraCount}.txt');

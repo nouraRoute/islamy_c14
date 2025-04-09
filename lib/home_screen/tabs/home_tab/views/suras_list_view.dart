@@ -3,18 +3,19 @@ import 'package:islamy_c14/home_screen/models/sura_model.dart';
 import 'package:islamy_c14/home_screen/tabs/home_tab/widgets/sura_tile.dart';
 
 class SurasListView extends StatelessWidget {
-  const SurasListView({super.key});
-
+  const SurasListView({super.key, required this.search, this.onTap});
+  final String? search;
+  final String Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    // List<SuraModel> suras = List.generate(
-    //   10,
-    //   (index) => SuraModel(
-    //       suraCount: index,
-    //       arName: 'arName$index',
-    //       enName: 'enName$index',
-    //       versesCount: index),
-    // );
+    List<SuraModel> filterdSuras = SuraModel.suras
+        .where(
+          (element) => (element.enName
+                  .toLowerCase()
+                  .contains((search ?? '').toLowerCase()) ||
+              element.arName.contains((search ?? ''))),
+        )
+        .toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,17 +24,12 @@ class SurasListView extends StatelessWidget {
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
         ),
-
-        // ...suras.map(
-        //   (e) => SuraTile(suraModel: e),
-        // )
-
         ListView.separated(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: SuraModel.suras.length,
+          itemCount: filterdSuras.length,
           itemBuilder: (context, index) => SuraTile(
-            suraModel: SuraModel.suras[index],
+            suraModel: filterdSuras[index],
           ),
           separatorBuilder: (BuildContext context, int index) => const Divider(
             color: Colors.white,
