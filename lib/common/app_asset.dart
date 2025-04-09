@@ -11,4 +11,7 @@ class AppAsset {
   static String logoImage = 'assets/images/Logo.png';
   static String homeTabBg = 'assets/images/home_tab_bg.png';
   static String suraLogo = 'assets/images/sura_logo.png';
+  static String suraHeaderOne = 'assets/images/sura_header1.png';
+  static String suraHeaderTwo = 'assets/images/sura_header2.png';
+  static String suraFotter = 'assets/images/sura_fotter.png';
 }

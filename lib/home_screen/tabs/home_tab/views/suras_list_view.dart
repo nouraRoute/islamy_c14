@@ -31,13 +31,9 @@ class SurasListView extends StatelessWidget {
         ListView.separated(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: 10,
+          itemCount: SuraModel.suras.length,
           itemBuilder: (context, index) => SuraTile(
-            suraModel: SuraModel(
-                arName: 'arName',
-                enName: 'enName',
-                versesCount: 10,
-                suraCount: index + 1),
+            suraModel: SuraModel.suras[index],
           ),
           separatorBuilder: (BuildContext context, int index) => const Divider(
             color: Colors.white,

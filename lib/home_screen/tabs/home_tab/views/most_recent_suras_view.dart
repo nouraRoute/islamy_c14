@@ -7,11 +7,6 @@ class MostRecentSurasView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<SuraModel> suras = List.generate(
-      10,
-      (index) => SuraModel(
-          arName: 'arName$index', enName: 'enName$index', versesCount: index),
-    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,9 +19,9 @@ class MostRecentSurasView extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .2,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: suras.length,
+            itemCount: SuraModel.suras.length,
             itemBuilder: (context, index) => SuraCard(
-              suraModel: suras[index],
+              suraModel: SuraModel.suras[index],
             ),
           ),
         )
