@@ -122,7 +122,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       success = true;
       setState(() {});
       //   print('##=>${fileContent}');
-      print('##=>${suraContent.length}');
+      // print('##=>${suraContent.length}');
     } catch (e) {
       loading = false;
       error = true;
