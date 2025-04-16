@@ -19,12 +19,15 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   bool error = false, success = false, loading = false;
   String? errorText;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadSuraContent();
+  }
+
+  @override
   Widget build(BuildContext context) {
     suraModel = ModalRoute.of(context)!.settings.arguments as SuraModel;
-    if (loadContent) {
-      loadSuraContent();
-      loadContent = false;
-    }
 
     return Scaffold(
       appBar: AppBar(
