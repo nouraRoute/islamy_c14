@@ -23,29 +23,14 @@ class SurasListView extends StatelessWidget {
               element.arName.contains((search ?? ''))),
         )
         .toList();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Suras List',
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w700, fontSize: 16),
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) => SuraTile(
+          onSuraClicked: onSuraClicked,
+          suraModel: filterdSuras[index],
         ),
-        ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: filterdSuras.length,
-          itemBuilder: (context, index) => SuraTile(
-            onSuraClicked: onSuraClicked,
-            suraModel: filterdSuras[index],
-          ),
-          separatorBuilder: (BuildContext context, int index) => const Divider(
-            color: Colors.white,
-            endIndent: 40,
-            indent: 40,
-          ),
-        )
-      ],
+        childCount: filterdSuras.length,
+      ),
     );
   }
 }

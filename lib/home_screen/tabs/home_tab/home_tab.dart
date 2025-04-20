@@ -44,47 +44,56 @@ class _HomeTabState extends State<HomeTab> {
         bgImage: AppAsset.homeTabBg,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomTextField(
-                suffix: InkWell(
-                    onTap: () {
-                      controller.clear();
-                      FocusScope.of(context).unfocus();
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: CustomTextField(
+                  suffix: InkWell(
+                      onTap: () {
+                        controller.clear();
+                        FocusScope.of(context).unfocus();
+                        setState(() {});
+                      },
+                      child: Icon(
+                        Icons.close_outlined,
+                        color: AppColors.greyColor,
+                      )),
+                  controller: controller,
+                  hintText: 'Sura Name',
+                  onChanged: (p0) {
+                    if (p0.length > 3) {
                       setState(() {});
-                    },
-                    child: Icon(
-                      Icons.close_outlined,
-                      color: AppColors.greyColor,
-                    )),
-                controller: controller,
-                hintText: 'Sura Name',
-                onChanged: (p0) {
-                  if (p0.length > 3) {
-                    setState(() {});
-                  } else if (p0.isEmpty) {
-                    setState(() {});
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: ListView(
-                  children: [
-                    MostRecentSurasView(
-                      mostRecent: mostRecentList,
-                      onSuraClicked: addToMostRecent,
-                    ),
-                    SurasListView(
-                      search: controller.text.trim(),
-                      onSuraClicked: addToMostRecent,
-                    )
-                  ],
+                    } else if (p0.isEmpty) {
+                      setState(() {});
+                    }
+                  },
                 ),
               ),
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 10,
+                ),
+              ),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                MostRecentSurasView(
+                  mostRecent: mostRecentList,
+                  onSuraClicked: addToMostRecent,
+                ),
+              ])),
+              const SliverToBoxAdapter(
+                child: Text(
+                  'Suras List',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16),
+                ),
+              ),
+              SurasListView(
+                search: controller.text.trim(),
+                onSuraClicked: addToMostRecent,
+              )
             ],
           ),
         ));

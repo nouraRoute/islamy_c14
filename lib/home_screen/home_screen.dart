@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:islamy_c14/common/app_asset.dart';
 import 'package:islamy_c14/common/app_colors.dart';
+import 'package:islamy_c14/common/app_theme.dart';
 import 'package:islamy_c14/home_screen/tabs/hadeeth_tab/hadeeth_tab.dart';
 import 'package:islamy_c14/home_screen/tabs/home_tab/home_tab.dart';
 import 'package:islamy_c14/home_screen/tabs/radio_tab/radio_tab.dart';
 import 'package:islamy_c14/home_screen/tabs/sebha_tab/sebha_tab.dart';
 import 'package:islamy_c14/home_screen/tabs/time_tab/time_tab.dart';
+import 'package:islamy_c14/provider/basic_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,10 +29,19 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
   @override
   Widget build(BuildContext context) {
+    print(context.watch<BasicProvider>().curantTheme);
     return SafeArea(
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+                onPressed: () {
+                  context.read<BasicProvider>().editTheme();
+                },
+                icon: Icon(Icons.sunny)),
+          ),
+          resizeToAvoidBottomInset: false,
           body: Stack(
             children: [
               tabs[index],

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:islamy_c14/common/app_theme.dart';
 import 'package:islamy_c14/home_screen/home_screen.dart';
 import 'package:islamy_c14/home_screen/tabs/home_tab/sura_details_screen.dart';
+import 'package:islamy_c14/provider/basic_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => BasicProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: context.watch<BasicProvider>().curantTheme,
       theme: AppTheme.lightTheme,
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
